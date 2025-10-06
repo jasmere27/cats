@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dancing Cat Fun</title>
+  <style>
+    body {
+      background-color: #ffe6f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Poppins", sans-serif;
+    }
+    #startBtn, #nextBtn {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    }
+    #startBtn:hover, #nextBtn:hover {
+      background-color: #ff66b3;
+      transform: scale(1.05);
+    }
+    #catContainer {
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+    }
+    img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      color: #ff66b3;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startBtn">open me</button>
+
+  <div id="catContainer">
+    <h2>😺</h2>
+    <img id="catGif" src="" alt="Dancing Cat">
+    <br><br>
+    <button id="nextBtn">Next Cat 😻</button>
+  </div>
+
+  <script>
+    const gifs = [
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHg4Y2syMzE4MWU3c3plZWw5ZnNtb2Y2OHhlbm16NDYyb2RveWVhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cW64pEEZe0YZa/giphy.gif", // vibing cat
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cXIzaGt5eG9pMTZyNHg2cTd1MmRxY2oxeGV6bm5mbTRjOWkxN3RiMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l41Yk0Ovlxko5oYco/giphy.gif", // laptop cat
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHg4Y2syMzE4MWU3c3plZWw5ZnNtb2Y2OHhlbm16NDYyb2RveWVhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/dsMFrxB2agKf6/giphy.gif", // dance loop
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHg4Y2syMzE4MWU3c3plZWw5ZnNtb2Y2OHhlbm16NDYyb2RveWVhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bRTe2TGxczPVH50vxO/giphy.gif", // cat wiggle
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDFqMTA2bms1OWVubjU0OHV5NHYzbXFmZWNtMTl3c3A1dWY1aXk2OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/giphy.gif", // smooth cat dance
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDFqMTA2bms1OWVubjU0OHV5NHYzbXFmZWNtMTl3c3A1dWY1aXk2OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sr8jYZVVsCmxddga8w/giphy.gif" // disco cat
+    ];
+
+    let index = 0;
+
+    const startBtn = document.getElementById("startBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const catContainer = document.getElementById("catContainer");
+    const catGif = document.getElementById("catGif");
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      catContainer.style.display = "block";
+      catGif.src = gifs[index];
+    });
+
+    nextBtn.addEventListener("click", () => {
+      index = (index + 1) % gifs.length;
+      catGif.src = gifs[index];
+    });
+  </script>
+
+</body>
+</html>
